@@ -13,9 +13,12 @@ use std::path::PathBuf;
 fn main() {
     cc::Build::new()
         .object("lib/sub.o")
-        //.file("lib/test.c")
+        .file("lib/test.c")
         .include("lib")
         .compile("test");
+
+    // Tell cargo to tell rustc to link the system gfortran shared library.
+    println!("cargo:rustc-link-lib=gfortran");
 
     // let bindings = bindgen::Builder::default()
     //     .header("lib/test.c")

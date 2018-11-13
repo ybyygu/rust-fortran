@@ -4,12 +4,9 @@
 // :END:
 
 // [[file:~/Workspace/Programming/rust-libs/rust-fortran/rust-fortran.note::*lib.rs][lib.rs:1]]
-#![feature(link_args)]
-
 use libc::{c_int, c_float};
 
 #[link(name="test")]
-#[link_args="-lgfortran"]
 extern "C" {
     pub fn fortransub();
     pub fn fortrantest(a: *mut c_float, b: *mut c_float, c: *mut c_float);
