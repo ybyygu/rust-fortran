@@ -5,5 +5,5 @@
 
 extern void fortransub();
 extern int numbers[5];
-extern void fortrantest(float *a, float *b, float *c);
+extern void fortrantest(float* a, float* b, float* c);
 /* c:1 ends here */
