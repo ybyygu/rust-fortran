@@ -7,7 +7,7 @@ integer(C_INT), bind(C), dimension(5) :: numbers
 contains
 
 subroutine fortransub() bind(C)
-      print *, "Hello from Fortran!"
+      print *, "!! Hello from Fortran !!"
       numbers(1) = 1
       numbers(2) = 2
       numbers(3) = 3
@@ -18,11 +18,12 @@ end subroutine
 
 end module
 
-subroutine pythagoras(a, b, c) bind(C)
+subroutine fortrantest(a, b, c) bind(C)
       use iso_c_binding
       implicit none
       real (C_FLOAT), intent(in) :: a, b
       real (C_FLOAT), intent(out) :: c
 
+      print *, "Hello from Fortran!"
       c = sqrt(a*a + b*b)
-end subroutine pythagoras
+end subroutine fortrantest
