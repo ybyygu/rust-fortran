@@ -4,12 +4,12 @@
 // :END:
 
 // [[file:~/Workspace/Programming/rust-libs/rust-fortran/rust-fortran.note::*lib.rs][lib.rs:1]]
-use libc::{c_int, c_float};
+use libc::{c_float};
 
-#[link(name="test")]
 extern "C" {
     pub fn fortransub();
     pub fn fortrantest(a: *mut c_float, b: *mut c_float, c: *mut c_float);
+    pub fn fortrantest2_(a: *mut c_float, b: *mut c_float, c: *mut c_float);
 }
 
 #[test]
@@ -21,6 +21,7 @@ fn test_fortran() {
     unsafe {
         fortransub();
         fortrantest(&mut side_a, &mut side_b, &mut hyp);
+        fortrantest2_(&mut side_a, &mut side_b, &mut hyp);
     }
 
     println!("The hypotenuse of triangle with sides");

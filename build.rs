@@ -2,6 +2,8 @@
 // :PROPERTIES:
 // :header-args: :tangle build.rs
 // :END:
+// [[https://doc.rust-lang.org/cargo/reference/build-scripts.html][Build Scripts - The Cargo Book]]
+
 
 // [[file:~/Workspace/Programming/rust-libs/rust-fortran/rust-fortran.note::*build.rs][build.rs:1]]
 use bindgen;
@@ -11,12 +13,14 @@ use std::env;
 use std::path::PathBuf;
 
 fn main() {
-    cc::Build::new()
-        .object("lib/sub.o")
-        .file("lib/test.c")
-        .include("lib")
-        .compile("test");
+    // compile c code
+    // cc::Build::new()
+    //     .file("lib/test.c")
+    //     .include("lib")
+    //     .compile("test");
 
+    // Tell cargo to tell rustc to link static library under lib directory
+    println!("cargo:rustc-flags=-l static=sub -L lib");
     // Tell cargo to tell rustc to link the system gfortran shared library.
     println!("cargo:rustc-link-lib=gfortran");
 
